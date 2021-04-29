@@ -1,0 +1,66 @@
+import React from 'react';
+import './App.css';
+
+/* function Helloworld(props){
+  console.log(props)
+  return(
+    <div id="hello">
+      <h3>{props.subtitle}</h3>
+      {props.mytext}
+    </div>
+  )
+} */
+
+class Helloworld extends React.Component{
+
+  state = {
+    show: true
+  }
+
+  //En vez de escribir el .bind(this) en el onclick mejor se escribe = () =>
+  toggleShow = () =>{
+    this.setState({show: !this.state.show})
+  }
+
+  render(){
+    if(this.state.show){
+      return (
+            <div id="hello">
+            <h3>{this.props.subtitle}</h3>
+            {this.props.mytext}
+            <button onClick={this.toggleShow}>Toggle show</button>
+          </div>
+          )
+    }
+    else{
+      return <h1>
+        No hay elementos :(
+          <button onClick={this.toggleShow}>Toggle show</button>
+        </h1>
+    }
+  }
+}
+//funcion flecha
+//const App = () => <div>This is my component: <Helloworld/></div>
+
+//Imprimir a travez de un clase en donde se han importado ciertos componentes para que sea posible imprimir
+/*class App extends React.Component{
+  render(){
+    return <div>This is my component: <Helloworld/></div>
+  }
+}*/
+
+
+//funcion comun
+function App() {
+  return (
+    <div>
+      This is my component: 
+      <Helloworld mytext="hola como estas" subtitle="loremp ispum"/>
+      <Helloworld mytext="hola mundo" subtitle="componente 2"/>
+      <Helloworld mytext="okay bye" subtitle="componente3"/>
+    </div>
+  );
+}
+
+export default App;
